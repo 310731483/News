@@ -1,0 +1,33 @@
+{
+  "pages": [
+    "pages/posts/post",
+    "pages/posts/post-detail/post-detail",
+    "pages/movies/movies",
+    "pages/logs/logs",
+    "pages/index/index",
+    "pages/movies/more-movie/more-movie"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#406f80",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "#fff"
+  },
+  "tabBar": {
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/posts/post",
+        "text": "阅读",
+        "iconPath": "images/tab/yuedu.png",
+        "selectedIconPath": "/images/tab/yuedu1.png"
+      },
+      {
+        "pagePath": "pages/movies/movies",
+        "text": "电影",
+        "iconPath": "images/tab/dianying.png",
+        "selectedIconPath": "/images/tab/dianying1.png"
+      }
+    ]
+  }
+}
