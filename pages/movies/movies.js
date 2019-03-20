@@ -16,7 +16,10 @@ Component({
   data: {
     inTheaters: {},
     comingSoon: {},
-    top250:{}
+    top250:{},
+    searchResult: {},
+    containerShow: true,
+    searchPanelShow: false
   },
 
   /**
@@ -35,10 +38,17 @@ Component({
       this.getMovieListData(top250Url, "top250", "豆瓣Top250");
     },
 
-    onMoreTap:function(event){
+    onMoreTap:function(event){ //跳转更多页面
       var category= event.currentTarget.dataset.category;
       wx.navigateTo({
         url:"more-movie/more-movie?category="+ category
+      })
+    },
+
+    onMovieTap: function (event) { //跳转详情页
+      var movieId = event.currentTarget.dataset.movieid;
+      wx.navigateTo({
+        url: 'movie-detail/movie-detail?id='+ movieId,
       })
     },
 
@@ -57,6 +67,27 @@ Component({
           console.log("failed")
         }
       })
+    },
+
+    onCancelImgTap: function (event){
+      this.setData({
+        containerShow: true,
+        searchPanelShow: false,
+        searchResult: {}
+      })
+    },
+
+    onBindFocus:function(event){
+      this.setData({
+        containerShow: false,
+        searchPanelShow: true
+      })
+    },
+
+    onBindBlur:function(event){
+      var text = event.detail.value;
+      var searchUrl = app.globalData.doubanBase + '/v2/movie/search?q=' + text;
+      this.getMovieListData(searchUrl, "searchResult", "");
     },
 
     processDoubanData: function (moviesDouban, settedKey, categoryTitle){

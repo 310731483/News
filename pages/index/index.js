@@ -54,7 +54,10 @@ Page({
   onTap: function(event) {
     // wx.navigateTo({url: "../posts/post"});
     // navigateTo跳转页面,可返回，最多5级,隐藏上一个页面,执行的是onHide
-    wx.navigateTo({
+    // wx.navigateTo({
+    //   url: "../posts/post",
+    // })
+    wx.switchTab({
       url: "../posts/post",
     })
     // redirectTo重定向，不可返回，关闭上一个页面,执行的是onUnload

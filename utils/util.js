@@ -37,7 +37,7 @@ function http(url, callBack) {
     url: url,
     method: 'GET',
     header: {
-      "Content-Type": "application/json"
+      "Content-Type": "json"
     },
     success: function (res) {
       callBack(res.data);
@@ -48,8 +48,30 @@ function http(url, callBack) {
   })
 }
 
+function convertToCastString(casts){
+  var castsjoin = "";
+  for(var idx in casts){
+    castsjoin = castsjoin + casts[idx].name + "/";
+  }
+  return castsjoin.substring(0, castsjoin.length-1);
+}
+
+function convertToCastInfos(casts) {
+  var castsArray = [];
+  for(var idx in casts){
+    var cast = {
+      img: casts[idx].avatars ? casts[idx].avatars.large : "",
+      name: casts[idx].name
+    }
+    castsArray.push(cast);
+  }
+  return castsArray;
+}
+
 module.exports = {
   formatTime: formatTime,
   convertToStarsArray: convertToStarsArray,
-  http: http
+  http: http,
+  convertToCastString: convertToCastString,
+  convertToCastInfos: convertToCastInfos
 }

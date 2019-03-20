@@ -69,6 +69,13 @@ Component({
       app.globalData.g_isPlayingMusic = false;
       app.globalData.g_currenMusicPostId = null;
     });
+    wx.onBackgroundAudioStop(function () { // 停止
+      that.setData({
+        isPlayingMusic: false
+      })
+      app.globalData.g_isPlayingMusic = false;
+      app.globalData.g_currenMusicPostId = null;
+    });
   },
 
     onCollectionTap: function(event) {  // 收藏

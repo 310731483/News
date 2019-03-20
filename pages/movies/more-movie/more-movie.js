@@ -54,6 +54,7 @@ Page({
     var refreshUrl = this.data.requestUrl + "?star=0&count=20";
     this.data.movies = {};
     this.data.isEmpty = true; 
+    this.data.totalCount = 0;
     util.http(refreshUrl, this.processDoubanData);
     wx.showNavigationBarLoading(); // 开启Loading
   },
@@ -95,5 +96,12 @@ Page({
     wx.setNavigationBarTitle({
       title: this.data.navigateTitle,
     })
-  }
+  },
+
+  onMovieTap: function (event) { //跳转详情页
+    var movieId = event.currentTarget.dataset.movieid;
+    wx.navigateTo({
+      url: '../movie-detail/movie-detail?id=' + movieId,
+    })
+  },
 })
